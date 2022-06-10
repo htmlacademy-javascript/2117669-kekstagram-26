@@ -7,7 +7,7 @@ getRandomInRange(1, 10);
 
 //сам придумал
 function checkMaxStringLength (str, maxLength) {
-  return (str < maxLength);
+  return (str.length <= maxLength) ;
 }
-checkMaxStringLength('anystring',7);
-
+checkMaxStringLength('longstring', 5);
+// функция возвращает булево значение в зависимости от длины веденой строки в параметре один и макс. возможной длины
