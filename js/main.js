@@ -1,16 +1,33 @@
-// Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
-function getRandomPositiveInteger (a, b) {
-  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-}
-getRandomPositiveInteger(1, 10);
+import {PHOTO_DESCRIPTIONS,COMMENTS,NAMES} from './input-data.js';
+import {getRandomPositiveInteger} from './util.js';
+const createCommentsElement = (_,index) => {  // Функция для описания обьекта с комментарием
+  //Постоянная для случайного выбора коммента из массива COMMENTS
+  const messageContent = COMMENTS[getRandomPositiveInteger(0,COMMENTS.length - 1)];
+  //Постоянная для случайного выбора коммента из массива NAMES
+  const author = NAMES[getRandomPositiveInteger(0,NAMES.length - 1)];
+  return {
+    id:index +1,/*т.к.фун-я createCommentsElement - это колбек для постоянной finalList (она входит в состав фун-и createPhotoDescription - это прямой колбек) она будет перебираться 25 раз и мы получим наши неповторяющиеся ID через второй параметр index*/
+    avatar: `img/avatar-${getRandomPositiveInteger (1, 6)}.svg`,
+    message: messageContent,
+    name: author,
+  };
+};
 
-
-//Функция от Кекса
-function checkStringLength (string, length) {
-  return string.length <= length;
-}
-checkStringLength('anystring',7);
-
+const createPhotoDescription = (_,index) => { /*Функция для создания основного обьекта из 5ти элементов*/
+  const adress = `photos/${getRandomPositiveInteger(1,25)}.jpg`;
+  //Постоянная для получения описания фотографии из массива PHOTO_DESCRIPTIONS
+  const photoPhrase = PHOTO_DESCRIPTIONS[getRandomPositiveInteger(0,PHOTO_DESCRIPTIONS.length-1)];
+  const likesNumber = getRandomPositiveInteger(15,200);
+  //Постоянная для создания массива из 2х обьектов-комментариев ,которые создаются фун-ей createCommentsElement
+  const totalComments = Array.from({length: 2},createCommentsElement );
+  return {
+    id:index+1,/*т.к.фун-я createPhotoDescription - это прямой колбек для постоянной finalList  она будет перебираться 25 раз и мы получим наши неповторяющиеся ID через второй параметр index*/
+    url:adress,
+    description:photoPhrase,
+    likes:likesNumber,
+    comments: totalComments,
+  };
+};
+const objectQuantity = 25;
+const finalList = Array.from({length:objectQuantity},createPhotoDescription);
+finalList.join();
