@@ -1,19 +1,29 @@
 import { finalList } from './main.js';
 import { fullPhoto } from './thumbnail-rendering.js';
+const closeButton = document.querySelector('.big-picture__cancel');
 
-function closeBigPicture  (element)  {
-  element.addEventListener('click', (evt) => {
-    evt.preventDefault();
+function closeByClickHandler(evt) {
+  evt.preventDefault();
+  fullPhoto.classList.add('hidden');
+  removeListenersToCloseBigPicture();
+}
+function closeByEscapeHandler(evt) {
+  if (evt.key === 'Escape') {
     fullPhoto.classList.add('hidden');
-  });
-  document.addEventListener ('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      fullPhoto.classList.add('hidden');
-    }
-  });
+    removeListenersToCloseBigPicture();
+  }
+}
+function addListenersToCloseBigPicture()  { //добавл листенер
+  closeButton.addEventListener('click', closeByClickHandler);
+  document.addEventListener ('keydown', closeByEscapeHandler);
 }
 
-function OpenBigPicture  (element)  {
+function removeListenersToCloseBigPicture()  { //убирает листенер
+  closeButton.removeEventListener('click', closeByClickHandler);
+  document.removeEventListener ('keydown', closeByEscapeHandler);
+}
+
+function OpenBigPicture  (element)  { //Описывает новые данные,выбрав элемент из отрисовки
   element.addEventListener('click', (evt) => {
     evt.preventDefault();
     fullPhoto.querySelector('.social__comment-count').classList.add('hidden');
@@ -39,10 +49,8 @@ function OpenBigPicture  (element)  {
     socialCommentsList.forEach((commentFragment) => {
       commentsListFragment.append(commentFragment);
     });
-
     fullPhoto.classList.remove('hidden');
-    const closeButton = fullPhoto.querySelector('.big-picture__cancel');
-    closeBigPicture(closeButton);
+    addListenersToCloseBigPicture();
   });// для Listener
 }
 export {OpenBigPicture};

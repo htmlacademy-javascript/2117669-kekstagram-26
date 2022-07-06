@@ -31,7 +31,4 @@ function createPhotoDescription (_,index) { /*Функция для создан
 const OBJECT_QUANTITY = 25;
 const finalList = Array.from({length:OBJECT_QUANTITY},createPhotoDescription);
 finalList.join();
-console.log(finalList);
-
-
 export {finalList};
