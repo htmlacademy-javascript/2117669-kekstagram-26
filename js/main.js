@@ -1,6 +1,6 @@
 import {PHOTO_DESCRIPTIONS,COMMENTS,NAMES} from './input-data.js';
 import {getRandomPositiveInteger} from './util.js';
-const createCommentsElement = (_,index) => {  // Функция для описания обьекта с комментарием
+function createCommentsElement  (_,index)  {  // Функция для описания обьекта с комментарием
   //Постоянная для случайного выбора коммента из массива COMMENTS
   const messageContent = COMMENTS[getRandomPositiveInteger(0,COMMENTS.length - 1)];
   //Постоянная для случайного выбора коммента из массива NAMES
@@ -11,10 +11,10 @@ const createCommentsElement = (_,index) => {  // Функция для опис�
     message: messageContent,
     name: author,
   };
-};
+}
 
-const createPhotoDescription = (_,index) => { /*Функция для создания основного обьекта из 5ти элементов*/
-  const adress = `photos/${getRandomPositiveInteger(1,25)}.jpg`;
+function createPhotoDescription (_,index) { /*Функция для создания основного обьекта из 5ти элементов*/
+  const adress = `photos/${index+1}.jpg`;
   //Постоянная для получения описания фотографии из массива PHOTO_DESCRIPTIONS
   const photoPhrase = PHOTO_DESCRIPTIONS[getRandomPositiveInteger(0,PHOTO_DESCRIPTIONS.length-1)];
   const likesNumber = getRandomPositiveInteger(15,200);
@@ -27,7 +27,11 @@ const createPhotoDescription = (_,index) => { /*Функция для созда
     likes:likesNumber,
     comments: totalComments,
   };
-};
-const objectQuantity = 25;
-const finalList = Array.from({length:objectQuantity},createPhotoDescription);
+}
+const OBJECT_QUANTITY = 25;
+const finalList = Array.from({length:OBJECT_QUANTITY},createPhotoDescription);
 finalList.join();
+console.log(finalList);
+
+
+export {finalList};
