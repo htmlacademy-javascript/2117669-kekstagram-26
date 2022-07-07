@@ -1,16 +1,20 @@
-import {FINAL_LIST} from './main.js';
-const USER_PHOTO = document.querySelector('.pictures');//Блок куда все вставлять
+import {finalList} from './main.js';
 
-const TEMPLATE_FRAGMENT = document.querySelector('#picture').content;
-const TEMPLATE = TEMPLATE_FRAGMENT.querySelector('.picture');
+const userPhoto = document.querySelector('.pictures');//Блок куда все вставлять
 
-const FRAGMENT = document.createDocumentFragment();
-FINAL_LIST.forEach((_,index) => {
-  const ELEMENT = TEMPLATE.cloneNode(true);// <a> - clone
-  ELEMENT.querySelector('.picture__img').src =  FINAL_LIST[index].url;
-  ELEMENT.querySelector('.picture__comments').textContent = FINAL_LIST[index].comments;
-  ELEMENT.querySelector('.picture__likes').textContent = FINAL_LIST[index].likes;
-  FRAGMENT.append(ELEMENT);
+const templateFragment = document.querySelector('#picture').content;
+const template = templateFragment.querySelector('.picture');
+const fullPhoto = document.querySelector('.big-picture');//<section>
+
+const fragment = document.createDocumentFragment();
+finalList.forEach((_,index) => {
+  const element = template.cloneNode(true);// <a> - clone
+  element.querySelector('.picture__img').src =  finalList[index].url;
+  element.querySelector('.picture__comments').textContent = finalList[index].comments;
+  element.querySelector('.picture__likes').textContent = finalList[index].likes;
+  fragment.append(element);
+
 });
 
-USER_PHOTO.append(FRAGMENT);
+userPhoto.append(fragment);
+export {userPhoto,fullPhoto};
