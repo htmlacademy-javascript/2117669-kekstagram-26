@@ -68,7 +68,7 @@ function OpenBigPicture  (element)  { //Описывает новые данны
       socialCommentsCounterElement.textContent =`${commentStringAtBegining} из 125 комментариев`;
       if (commentStringAtBegining < commentStringAtAll ){
         renderComments(commentStringAtBegining);
-      }else {
+      }else{
         commentsLoaderElement.classList.add('hidden');
         commentsLoaderElement.removeEventListener('click',loadCommentHandler);
       }
@@ -76,8 +76,8 @@ function OpenBigPicture  (element)  { //Описывает новые данны
     commentsLoaderElement.addEventListener('click',loadCommentHandler);
 
 
-  });// для Listener
+  });
 }
-//
+
 
 export {OpenBigPicture};
