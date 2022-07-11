@@ -1,37 +1,16 @@
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
-const allEffects = document.querySelectorAll('.effects__radio');
-const pictureWithoutClass = document.querySelector('.img-upload__preview').firstChild;
+const onRadioButtonClick = document.querySelector('.img-upload__effects');
+const pictureWithoutClass = document.querySelector('.img-upload__preview').firstElementChild;
 console.log(pictureWithoutClass);
 
 
 valueElement.value = 50;
 
 
-allEffects.forEach((button) => {
-  button.addEventListener('change',(evt)=>{
-    console.log(evt.target.querySelector('.effects__preview'));
-
-    pictureWithoutClass.classList.add( evt.target.querySelector('SPAN').class) ;
-  });
+onRadioButtonClick.addEventListener('change',(evt)=>{
+  console.log(evt.target);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
