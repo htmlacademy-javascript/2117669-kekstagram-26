@@ -1,5 +1,5 @@
 import { OpenBigPicture } from './full-screen-view.js';
-import {finalList} from './main.js';
+import { finalList } from './main.js';
 
 const userPhoto = document.querySelector('.pictures');//Блок куда все вставлять
 
