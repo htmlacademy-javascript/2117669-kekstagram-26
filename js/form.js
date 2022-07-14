@@ -37,7 +37,7 @@ function isHashtagDifferent(value) {
   const hashtags = value.trim().toLowerCase().split(' ');
   let isSameHashtag = true;
   hashtags.forEach((element)=>{
-    if(hashtags.some((hashtag) => hashtag === element)){
+    if(hashtags.filter((hashtag) => hashtag === element).length > 1){
       isSameHashtag = false;
     }
   });
