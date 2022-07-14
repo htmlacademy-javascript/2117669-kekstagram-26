@@ -1,4 +1,4 @@
-import { OpenBigPicture } from './full-screen-view.js';
+import { openBigPicture } from './full-screen-view.js';
 import { finalList } from './main.js';
 
 const userPhoto = document.querySelector('.pictures');//Блок куда все вставлять
@@ -14,7 +14,7 @@ finalList.forEach((_,index) => {
   element.querySelector('.picture__comments').textContent = finalList[index].comments;
   element.querySelector('.picture__likes').textContent = finalList[index].likes;
   fragment.append(element);
-  OpenBigPicture(element);
+  openBigPicture(element);
 });
 
 userPhoto.append(fragment);

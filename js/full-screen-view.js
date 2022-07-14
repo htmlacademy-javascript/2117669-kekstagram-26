@@ -23,7 +23,7 @@ function removeListenersToCloseBigPicture()  { //убирает листенер
   document.removeEventListener ('keydown', closeByEscapeHandler);
 }
 
-function OpenBigPicture  (element)  { //Описывает новые данные,выбрав элемент из отрисовки
+function openBigPicture  (element)  { //Описывает новые данные,выбрав элемент из отрисовки
   element.addEventListener('click', (evt) => {
     evt.preventDefault();
     fullPhoto.querySelector('.social__comment-count').classList.add('hidden');
@@ -53,4 +53,4 @@ function OpenBigPicture  (element)  { //Описывает новые данны
     addListenersToCloseBigPicture();
   });// для Listener
 }
-export {OpenBigPicture};
+export {openBigPicture};
