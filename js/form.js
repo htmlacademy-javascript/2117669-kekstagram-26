@@ -7,7 +7,7 @@ const HASHTAG_MESSAGE_FAIL = 'Ваш хештег неправильный';
 const NO_REPEAT_HASHTAG_MESSAGE = 'Такой хештег уже есть';
 const NUMBER_WARNING_MESSAGE = 'Не более 5 хештегов';
 
-function notReactOnEsc (evt) {
+function notReactOnEsc(evt) {
   if (evt.key === 'Escape'){
     evt.preventDefault();
     evt.stopPropagation();
@@ -21,24 +21,24 @@ const pristine = new Pristine(formElement,{
   errorTextParent: 'img-upload__field-wrapper',
 });
 
-function isHashtagValid (value) {
+function isHashtagValid(value) {
   const hashtagItems = value.trim().toLowerCase().split(' ');
   return value === '' || hashtagItems.every((hashtag) =>  re.test(hashtag));
 }
 pristine.addValidator(hashtagInputElement, isHashtagValid, HASHTAG_MESSAGE_FAIL);
 
-function CheckHashtagsNumber (value) {
+function CheckHashtagsNumber(value) {
   const hashtagItems = value.trim().toLowerCase().split(' ');
   return hashtagItems.length <= MAX_HASHTAG_NUMBER;
 }
 pristine.addValidator(hashtagInputElement, CheckHashtagsNumber, NUMBER_WARNING_MESSAGE);
 
-function isHashtagDifferent (value) {
+function isHashtagDifferent(value) {
   const hashtags = value.trim().toLowerCase().split(' ');
-  let isSameHashtag = false;
+  let isSameHashtag = true;
   hashtags.forEach((element)=>{
-    if(hashtags.some((hashtag) => hashtag === element)){
-      isSameHashtag = true;
+    if(hashtags.filter((hashtag) => hashtag === element).length > 1){
+      isSameHashtag = false;
     }
   });
   return isSameHashtag;

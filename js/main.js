@@ -2,7 +2,7 @@ import {PHOTO_DESCRIPTIONS,COMMENTS,NAMES} from './input-data.js';
 import {getRandomPositiveInteger} from './util.js';
 import './show-hide-form.js';
 import './form.js';
-function createCommentsElement  (_,index)  {  // Функция для описания обьекта с комментарием
+function createCommentsElement(_,index)  {  // Функция для описания обьекта с комментарием
   //Постоянная для случайного выбора коммента из массива COMMENTS
   const messageContent = COMMENTS[getRandomPositiveInteger(0,COMMENTS.length - 1)];
   //Постоянная для случайного выбора коммента из массива NAMES
@@ -15,7 +15,7 @@ function createCommentsElement  (_,index)  {  // Функция для опис�
   };
 }
 
-function createPhotoDescription (_,index) { /*Функция для создания основного обьекта из 5ти элементов*/
+function createPhotoDescription(_,index) { /*Функция для создания основного обьекта из 5ти элементов*/
   const adress = `photos/${index+1}.jpg`;
   //Постоянная для получения описания фотографии из массива PHOTO_DESCRIPTIONS
   const photoPhrase = PHOTO_DESCRIPTIONS[getRandomPositiveInteger(0,PHOTO_DESCRIPTIONS.length-1)];
