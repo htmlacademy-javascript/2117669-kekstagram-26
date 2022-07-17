@@ -21,7 +21,7 @@ function createPhotoDescription(_,index) { /*Функция для создан�
   const photoPhrase = PHOTO_DESCRIPTIONS[getRandomPositiveInteger(0,PHOTO_DESCRIPTIONS.length-1)];
   const likesNumber = getRandomPositiveInteger(15,200);
   //Постоянная для создания массива из 2х обьектов-комментариев ,которые создаются фун-ей createCommentsElement
-  const totalComments = Array.from({length: 2},createCommentsElement );
+  const totalComments = Array.from({length: 20},createCommentsElement );
   return {
     id:index+1,/*т.к.фун-я createPhotoDescription - это прямой колбек для постоянной finalList  она будет перебираться 25 раз и мы получим наши неповторяющиеся ID через второй параметр index*/
     url:adress,
