@@ -33,4 +33,4 @@ function addListenerForCloseUploadByEsk(evt) {
   }
 }
 
-export {formElement};
+export {formElement,addListenerForCloseUploadByEsk,addListenerForCloseUploadByClick};

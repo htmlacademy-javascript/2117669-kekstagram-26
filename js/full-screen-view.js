@@ -1,5 +1,6 @@
 import { finalList } from './main.js';
 import { fullPhotoElement } from './thumbnail-rendering.js';
+import { sliderElement } from './slider.js';
 const onButtonClose = document.querySelector('.big-picture__cancel');
 const commentsLoaderElement = document.querySelector('.comments-loader');
 const socialCommentsCounterElement = document.querySelector('.social__comment-count');
@@ -68,14 +69,13 @@ function openBigPicture(element)  { //Описывает новые данные
       socialCommentsCounterElement.textContent =`${commentStringAtBegining} из 125 комментариев`;
       if (commentStringAtBegining < commentStringAtAll ){
         renderComments(commentStringAtBegining);
-      }else {
+      }else{
         commentsLoaderElement.classList.add('hidden');
         commentsLoaderElement.removeEventListener('click',loadCommentHandler);
       }
     }
     commentsLoaderElement.addEventListener('click',loadCommentHandler);
-
-
-  });// для Listener
+  });
+  sliderElement.hidden = true;
 }
 export {openBigPicture};

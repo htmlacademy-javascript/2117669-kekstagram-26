@@ -1,4 +1,5 @@
 import {formElement} from './show-hide-form.js';
+import './slider.js';
 const re = /^#[a-zA-Zа-яА-ЯЁё0-9]{1,19}$/;
 const hashtagInputElement = document.querySelector('.text__hashtags');
 const textCommentElement = document.querySelector('.text__description');
