@@ -1,5 +1,6 @@
 import { finalList } from './main.js';
 import { fullPhoto } from './thumbnail-rendering.js';
+import { sliderElement } from './slider.js';
 const closeButton = document.querySelector('.big-picture__cancel');
 const commentsLoaderElement = document.querySelector('.comments-loader');
 const socialCommentsCounterElement = document.querySelector('.social__comment-count');
@@ -74,9 +75,8 @@ function OpenBigPicture  (element)  { //Описывает новые данны
       }
     }
     commentsLoaderElement.addEventListener('click',loadCommentHandler);
-
-
   });
+  sliderElement.hidden = true;
 }
 
 

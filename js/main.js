@@ -2,6 +2,7 @@ import {PHOTO_DESCRIPTIONS,COMMENTS,NAMES} from './input-data.js';
 import {getRandomPositiveInteger} from './util.js';
 import './show-hide-form.js';
 import './form.js';
+import './scale.js';
 function createCommentsElement  (_,index)  {  // Функция для описания обьекта с комментарием
   //Постоянная для случайного выбора коммента из массива COMMENTS
   const messageContent = COMMENTS[getRandomPositiveInteger(0,COMMENTS.length - 1)];

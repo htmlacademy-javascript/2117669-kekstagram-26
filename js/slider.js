@@ -2,17 +2,17 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
 const onRadioButtonClick = document.querySelector('.img-upload__effects');
 const pictureWithoutClass = document.querySelector('.img-upload__preview').firstElementChild;
-const effectsRadio = document.querySelector('.effects__radio');
 
 let styleEffect = '';
 function changeClass (evt) {
   evt.preventDefault();
   const effect = evt.target.id.split('-')[1];
   const effectPreviewClass=`effects__preview--${effect}`;
-  console.log(effect);
   valueElement.value = 100;
+  pictureWithoutClass.classList.add('effects__preview--none');
   pictureWithoutClass.classList= '';
   pictureWithoutClass.classList.add(effectPreviewClass);
+  sliderElement.hidden = false;
   switch (effectPreviewClass){
     case 'effects__preview--chrome':
       sliderElement.noUiSlider.updateOptions({
@@ -69,15 +69,32 @@ function changeClass (evt) {
       });
       styleEffect = 'brightness';
       break;
-  }// скобка для свич
+    case 'effects__preview--none':
+      styleEffect = '';
+      sliderElement.hidden = true;
+      break;
+  } // скобка для свич
+
   sliderElement.noUiSlider.on('update', () => {
     valueElement.value = sliderElement.noUiSlider.get();
-
+    let tail ='';
+    pictureWithoutClass.style.filter = `${styleEffect}(${valueElement.value}${tail})`;
+    if (styleEffect === 'invert') {
+      tail ='%' ;
+      pictureWithoutClass.style.filter = `${styleEffect}(${valueElement.value}${tail})`;
+    }
+    else if(styleEffect === 'blur') {
+      tail = 'px';
+      pictureWithoutClass.style.filter = `${styleEffect}(${valueElement.value}${tail})`;
+    }
+    else if(styleEffect === '') {
+      pictureWithoutClass.style.filter ='';
+    }
   });
 }
-onRadioButtonClick.addEventListener('change',changeClass);
-// onRadioButtonClick.removeEventListener('change', changeClass);
 
+onRadioButtonClick.addEventListener('change',changeClass);
+//  onRadioButtonClick.removeEventListener('change', changeClass);
 
 noUiSlider.create(sliderElement, {
   range: {
@@ -88,17 +105,4 @@ noUiSlider.create(sliderElement, {
   step: 1,
   connect: 'lower',
 });
-
-sliderElement.noUiSlider.on('update', () => {
-  valueElement.value = sliderElement.noUiSlider.get();
-  const tail = styleEffect === 'invert'? '%':styleEffect === 'blur' ? 'px': '';
-  pictureWithoutClass.style.filter = `${styleEffect}(${valueElement.value}${tail})`;
-});
-
-
-// function getEffect(effectType, value){
-//   switch(effectType){
-//     case 'effects__preview--chrome':
-//     return `grayscale(${Number(value)/100)})`
-//   }
-// }
+export {sliderElement};
