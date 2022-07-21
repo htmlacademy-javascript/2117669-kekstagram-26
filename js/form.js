@@ -36,10 +36,10 @@ pristine.addValidator(hashtagInputElement, CheckHashtagsNumber, NUMBER_WARNING_M
 
 function isHashtagDifferent(value) {
   const hashtags = value.trim().toLowerCase().split(' ');
-  let isSameHashtag = false;
+  let isSameHashtag = true;
   hashtags.forEach((element)=>{
-    if(hashtags.some((hashtag) => hashtag === element)){
-      isSameHashtag = true;
+    if(hashtags.filter((hashtag) => hashtag === element).length > 1){
+      isSameHashtag = false;
     }
   });
   return isSameHashtag;

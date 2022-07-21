@@ -16,7 +16,7 @@ function createCommentsElement  (_,index)  {  // Функция для опис�
   };
 }
 
-function createPhotoDescription (_,index) { /*Функция для создания основного обьекта из 5ти элементов*/
+function createPhotoDescription(_,index) { /*Функция для создания основного обьекта из 5ти элементов*/
   const adress = `photos/${index+1}.jpg`;
   //Постоянная для получения описания фотографии из массива PHOTO_DESCRIPTIONS
   const photoPhrase = PHOTO_DESCRIPTIONS[getRandomPositiveInteger(0,PHOTO_DESCRIPTIONS.length-1)];
